@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('categoria_id'); //ele esta criando na tabela receitas uma coluna categoria_id 
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade'); //aqui ele esta criando uma chave estrangeira que referencia a coluna 
             //id da tabela categorias, e se a categoria for deletada, as receitas associadas a ela também serão deletadas (cascade)
-            $table->unsignedBigInteger('usuario_id'); //mesma coisa aqui
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->unsignedBigInteger('users_id'); //mesma coisa aqui
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
         
           
             $table->timestamps();
