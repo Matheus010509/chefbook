@@ -171,7 +171,7 @@ input:focus {
             <button class="btn">Cadastrar</button>
 
             <div class="link">
-                Já possui conta? <a href="login.html">Entrar</a>
+                Já possui conta? <a href="/login">Entrar</a>
             </div>
         </form>
     </div>

@@ -14,17 +14,17 @@
                             id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="inicio.html">Inicio</a>
+                                    <a class="nav-link" href="/inicio">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="favoritas.html">Favoritas</a>
+                                    <a class="nav-link" href="/receitas-favoritas">Favoritas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="minhasReceitas.html">Minhas Receitas</a>
+                                    <a class="nav-link" href="/minhas-receitas">Minhas Receitas</a>
                                 </li>
                             
                                <li class="nav-item">
-                                    <a class="nav-link" href="receitas1.html">Receitas</a>
+                                    <a class="nav-link" href="/receitas-prontas">Receitas</a>
                                 </li>
                               
                             </ul>

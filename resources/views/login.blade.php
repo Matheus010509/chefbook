@@ -74,6 +74,11 @@
         cursor: pointer;
         transition: 0.3s;
     }
+    .btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
 
     .btn:hover {
         background: #e85a2f;
@@ -100,14 +105,14 @@
 
     <form>
         <div class="form-group">
-            <input type="email" placeholder="Email" required>
+            <input type="email" placeholder="Email" >
         </div>
 
         <div class="form-group">
-            <input type="password" placeholder="Senha" required>
+            <input type="password" placeholder="Senha" >
         </div>
 
-        <button class="btn">Entrar</button>
+    <a href="/inicio" class="btn">Entrar</a>
     </form>
 </div>
 

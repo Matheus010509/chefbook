@@ -14,7 +14,7 @@
                         <p>Seja bem vindo ao seu restaurente virtual, aqui voce pode organizar e centralizar suas receitas em um so lugar!</p>
                         <div class="banner_btn">
                             <div class="banner_btn_iner">
-                                <a href="#" class="btn_2">Minhas receitas <img src="img/icon/left_1.svg" alt=""></a>
+                                <a href="/minhas-receitas" class="btn_2">Minhas receitas <img src="img/icon/left_1.svg" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -78,8 +78,8 @@
                         <img src="{{ asset('img/blog/blog_1.png') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="#">Panquecas americanas</a></h3>
-                        <a href="#" class="btn_3">
+                        <h3><a href="receitas-prontas">Panquecas americanas</a></h3>
+                        <a href="receitas-prontas" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>
@@ -94,8 +94,8 @@
                         <img src="{{ asset('img/cookie.jpg') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="#">Cookie</a></h3>
-                        <a href="#" class="btn_3">
+                        <h3><a href="receitas-prontas">Cookie</a></h3>
+                        <a href="receitas-prontas" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>
@@ -110,8 +110,8 @@
                         <img src="{{ asset('img/pave.webp') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="#">Pavê de maracujá</a></h3>
-                        <a href="#" class="btn_3">
+                        <h3><a href="receitas-prontas">Pavê de maracujá</a></h3>
+                        <a href="receitas-prontas" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>
