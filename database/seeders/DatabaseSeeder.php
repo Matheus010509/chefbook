@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Receita;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -10,16 +11,14 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
-        // User::factory(10)->create();
+     $this->call(UserSeeder::class);
+    User::factory(2)->create();  //criar 2 usuarios de teste usando a factory
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call(ReceitaSeeder::class);
+   Receita::factory(2)->create();  //criar 2 receitas de teste usando a factory. OBRIGATORIO ter o factory criado para a receita
+   //E tambem é necessario ter um model 
     }
 }

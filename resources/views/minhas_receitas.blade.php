@@ -1,4 +1,4 @@
-@extends('layout_base')
+@extends('layout/layout_base')
 
 @section('titulo')
 
@@ -22,6 +22,7 @@
     <!-- food_menu start-->
      
 @section('conteudo')
+
     <section class="food_menu gray_bg">
         <div class="container">
             <div class="row justify-content-between">
@@ -29,6 +30,7 @@
                     <div class="section_tittle">
                         <p>Minhas</p>
                         <h2>Receitas</h2>
+                        <button> <a href="/cadastro-receitas">Adicionar Receita </a></button>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -42,7 +44,10 @@
                             aria-selected="false">Lanche <img src="img/icon/play.svg" alt="play"></a>
                         <a id="Dinner-tab" data-toggle="tab" href="#Dinner" role="tab" aria-controls="Dinner"
                             aria-selected="false">Janta <img src="img/icon/play.svg" alt="play"> </a>
-                   
+
+                        <!-- Botão corrigido -->
+                       
+
                     </div>
                 </div>
             

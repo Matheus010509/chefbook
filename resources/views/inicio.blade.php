@@ -1,4 +1,4 @@
-@extends('layout_base')
+@extends('layout/layout_base')
 
 @section('conteudo')
 

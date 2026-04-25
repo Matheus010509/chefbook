@@ -5,11 +5,11 @@
     <title>ChefBook</title>
 </head>
 <body>
-    @include('scripts_css')
-    @include('menu_base')
-@yield('titulo')
+    @include('layout/scripts_css')
+    @include('layout/menu_base')
+     @yield('titulo')
     @yield('conteudo')
-@include('scripts_js')
+@include('layout/scripts_js')
 
 </body>
 </html>

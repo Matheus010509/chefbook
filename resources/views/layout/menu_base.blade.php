@@ -3,7 +3,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="inicio.html"> <img src="img/ChefBook.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="/inicio"> <img src="img/ChefBook.png" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -16,15 +16,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/inicio">Inicio</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/receitas-favoritas">Favoritas</a>
-                                </li>
+                             
                                 <li class="nav-item">
                                     <a class="nav-link" href="/minhas-receitas">Minhas Receitas</a>
                                 </li>
                             
                                <li class="nav-item">
                                     <a class="nav-link" href="/receitas-prontas">Receitas</a>
+                                </li>
+
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="/perfil">Perfil</a>
                                 </li>
                               
                             </ul>
