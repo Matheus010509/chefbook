@@ -2,7 +2,7 @@
 
 @section('titulo')
 
-    <!-- Header part end-->
+  
 <section class="breadcrumb breadcrumb_bg" style="margin-top: 100px;">
     <div class="container">
         <div class="row">

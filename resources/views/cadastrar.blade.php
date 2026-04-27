@@ -87,7 +87,7 @@ body {
     margin-bottom: 25px;
 }
 
-/* FORM */
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -106,7 +106,6 @@ input:focus {
     box-shadow: 0 0 5px rgba(255,107,61,0.3);
 }
 
-/* BOTÃO */
 .btn {
     width: 100%;
     padding: 12px;
@@ -123,7 +122,6 @@ input:focus {
     background: #e85a2f;
 }
 
-/* LINK */
 .link {
     margin-top: 15px;
     font-size: 13px;

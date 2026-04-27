@@ -84,7 +84,7 @@
         background: #e85a2f;
     }
 
-    /* LADO DIREITO */
+
     .right {
         width: 50%;
         background: url('https://images.unsplash.com/photo-1544025162-d76694265947') no-repeat center;

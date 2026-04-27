@@ -2,7 +2,7 @@
 
 @section('titulo')
 
-    <!-- breadcrumb start-->
+  
 <section class="breadcrumb breadcrumb_bg" style="margin-top: 100px;">
     <div class="container">
         <div class="row">
@@ -16,11 +16,10 @@
         </div>
     </div>
 </section>
-    <!-- breadcrumb start-->
+ 
 @endsection
-    <!--::chefs_part start::-->
-    <!-- food_menu start-->
-     
+
+
 @section('conteudo')
 
     <section class="food_menu gray_bg">
@@ -45,7 +44,6 @@
                         <a id="Dinner-tab" data-toggle="tab" href="#Dinner" role="tab" aria-controls="Dinner"
                             aria-selected="false">Janta <img src="img/icon/play.svg" alt="play"> </a>
 
-                        <!-- Botão corrigido -->
                        
 
                     </div>

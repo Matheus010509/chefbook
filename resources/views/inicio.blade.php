@@ -2,7 +2,6 @@
 
 @section('conteudo')
 
-<!-- banner part start-->
 <section class="banner_part">
     <div class="container">
         <div class="row align-items-center">
@@ -24,14 +23,14 @@
     </div>
 </section>
 
-<!-- Receita popular -->
+
 <section class="exclusive_item_part blog_item_section">
     <div class="container">
         <h2>Receita popular</h2>
     </div>
 </section>
 
-<!-- about part -->
+
 <section class="about_part">
     <div class="container-fluid">
         <div class="row align-items-center">

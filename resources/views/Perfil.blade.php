@@ -5,7 +5,7 @@
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
-```
+
 <div style="width: 100%; max-width: 500px; text-align: center;">
 
     <h2 class="mb-4" style="color: orange;">Perfil</h2>
@@ -28,7 +28,7 @@
     </div>
 
 </div>
-```
+
 
 </div>
 
