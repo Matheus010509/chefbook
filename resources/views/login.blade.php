@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login - ChefBook</title>
+
 <style>
     * {
         margin: 0;
@@ -74,16 +75,10 @@
         cursor: pointer;
         transition: 0.3s;
     }
-    .btn {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-}
 
     .btn:hover {
         background: #e85a2f;
     }
-
 
     .right {
         width: 50%;
@@ -93,27 +88,61 @@
         border-bottom-left-radius: 100px;
     }
 
+    .error {
+        color: red;
+        margin-bottom: 10px;
+    }
+.link {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.link a {
+    color: #ff6b3d;
+    text-decoration: none;
+}
+
 </style>
+
 </head>
 <body>
 
 <div class="left">
+
     <div class="logo">🍳 ChefBook</div>
     <div class="subtitle">Seu Livro de Receitas</div>
     <div class="title">Login</div>
     <div class="description">Acesse sua conta para gerenciar suas receitas</div>
 
-    <form>
+    {{-- ERRO DE LOGIN --}}
+    @if ($errors->any())
+        <div class="error">
+            Email ou senha inválidos
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
         <div class="form-group">
-            <input type="email" placeholder="Email" >
+            <input type="email" name="email" placeholder="Email" required>
         </div>
 
         <div class="form-group">
-            <input type="password" placeholder="Senha" >
+            <input type="password" name="password" placeholder="Senha" required>
         </div>
 
-    <a href="/inicio" class="btn">Entrar</a>
+        <button type="submit" class="btn">
+            Entrar
+        </button>
+
+  <div class="link">
+        Não possui uma conta? <a href="{{ route('register') }}">Cadastrar</a>
+    </div>
+
     </form>
+
 </div>
 
 <div class="right"></div>

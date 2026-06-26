@@ -16,8 +16,7 @@
         </div>
     </section>
 @endsection
-
-
+@section('conteudo')
     <section class="blog_area section_padding">
         <div class="container">
             <div class="row">

@@ -153,25 +153,39 @@ input:focus {
         <div class="title">Criar Conta</div>
         <div class="description">Comece agora sua jornada culinária</div>
 
-        <form>
-            <div class="form-group">
-                <input type="text" placeholder="Nome de usuário" required>
-            </div>
+      <form method="POST" action="{{ route('register') }}">
+    @csrf
 
-            <div class="form-group">
-                <input type="email" placeholder="Email" required>
-            </div>
+    {{-- ERROS --}}
+    @if ($errors->any())
+        <div style="color:red; margin-bottom:10px;">
+            Corrija os campos do cadastro
+        </div>
+    @endif
 
-            <div class="form-group">
-                <input type="password" placeholder="Senha" required>
-            </div>
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Nome de usuário" required>
+    </div>
 
-            <button class="btn">Cadastrar</button>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Email" required>
+    </div>
 
-            <div class="link">
-                Já possui conta? <a href="/login">Entrar</a>
-            </div>
-        </form>
+    <div class="form-group">
+        <input type="password" name="password" placeholder="Senha" required>
+    </div>
+
+    <div class="form-group">
+        <input type="password" name="password_confirmation" placeholder="Confirme a Senha" required>
+    </div>
+
+
+    <button type="submit" class="btn">
+        Criar Conta
+    </button>
+
+  
+</form>
     </div>
 </div>
 
