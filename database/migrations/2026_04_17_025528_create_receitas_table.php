@@ -27,7 +27,7 @@ return new class extends Migration
 */            //id da tabela categorias, e se a categoria for deletada, as receitas associadas a ela também serão deletadas (cascade)
   
 
-$table->unsignedBigInteger('users_id'); //mesma coisa aqui
+$table->unsignedBigInteger('users_id'); 
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
         
           

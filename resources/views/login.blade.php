@@ -4,107 +4,7 @@
 <meta charset="UTF-8">
 <title>Login - ChefBook</title>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-        display: flex;
-        height: 100vh;
-        background: #f5f5f5;
-    }
-
-    .left {
-        width: 50%;
-        background: #f5f5f5;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 80px;
-    }
-
-    .logo {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-
-    .subtitle {
-        color: #ff6b3d;
-        margin-bottom: 10px;
-    }
-
-    .title {
-        font-size: 42px;
-        margin-bottom: 20px;
-    }
-
-    .description {
-        color: #555;
-        margin-bottom: 40px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-    }
-
-    input:focus {
-        border-color: #ff6b3d;
-    }
-
-    .btn {
-        width: 100%;
-        padding: 12px;
-        background: #ff6b3d;
-        border: none;
-        color: white;
-        font-size: 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        background: #e85a2f;
-    }
-
-    .right {
-        width: 50%;
-        background: url('https://images.unsplash.com/photo-1544025162-d76694265947') no-repeat center;
-        background-size: cover;
-        border-top-left-radius: 100px;
-        border-bottom-left-radius: 100px;
-    }
-
-    .error {
-        color: red;
-        margin-bottom: 10px;
-    }
-.link {
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
-}
-
-.link a {
-    color: #ff6b3d;
-    text-decoration: none;
-}
-
-</style>
-
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
 
@@ -115,31 +15,67 @@
     <div class="title">Login</div>
     <div class="description">Acesse sua conta para gerenciar suas receitas</div>
 
-    {{-- ERRO DE LOGIN --}}
-    @if ($errors->any())
-        <div class="error">
-            Email ou senha inválidos
+    {{-- STATUS DA SESSÃO (ex: link de redefinição de senha enviado) --}}
+    @if (session('status'))
+        <div class="session-status">
+            {{ session('status') }}
         </div>
     @endif
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        {{-- EMAIL --}}
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" required>
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value="{{ old('email') }}"
+                autocomplete="username"
+                autofocus
+                required
+                class="{{ $errors->has('email') ? 'input-error' : '' }}"
+            >
+            @error('email')
+                <div class="field-error">{{ $message }}</div>
+            @enderror
         </div>
 
+        {{-- SENHA --}}
         <div class="form-group">
-            <input type="password" name="password" placeholder="Senha" required>
+            <input
+                type="password"
+                name="password"
+                placeholder="Senha"
+                autocomplete="current-password"
+                required
+                class="{{ $errors->has('password') ? 'input-error' : '' }}"
+            >
+            @error('password')
+                <div class="field-error">{{ $message }}</div>
+            @enderror
         </div>
 
-        <button type="submit" class="btn">
-            Entrar
-        </button>
+        {{-- REMEMBER ME + ESQUECI A SENHA --}}
+        <div class="remember-row">
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="remember">
+                Lembrar de mim
+            </label>
 
-  <div class="link">
-        Não possui uma conta? <a href="{{ route('register') }}">Cadastrar</a>
-    </div>
+            @if (Route::has('password.request'))
+                <a href="{{ route('password.request') }}" class="forgot-link">
+                    Esqueci minha senha
+                </a>
+            @endif
+        </div>
+
+        <button type="submit" class="btn">Entrar</button>
+
+        <div class="link">
+            Não possui uma conta? <a href="{{ route('register') }}">Cadastrar</a>
+        </div>
 
     </form>
 
