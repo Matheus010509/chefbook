@@ -15,7 +15,6 @@
     <div class="title">Login</div>
     <div class="description">Acesse sua conta para gerenciar suas receitas</div>
 
-    {{-- STATUS DA SESSÃO (ex: link de redefinição de senha enviado) --}}
     @if (session('status'))
         <div class="session-status">
             {{ session('status') }}
@@ -25,7 +24,6 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        {{-- EMAIL --}}
         <div class="form-group">
             <input
                 type="email"
@@ -42,7 +40,7 @@
             @enderror
         </div>
 
-        {{-- SENHA --}}
+  
         <div class="form-group">
             <input
                 type="password"
@@ -57,7 +55,6 @@
             @enderror
         </div>
 
-        {{-- REMEMBER ME + ESQUECI A SENHA --}}
         <div class="remember-row">
             <label for="remember_me">
                 <input type="checkbox" id="remember_me" name="remember">

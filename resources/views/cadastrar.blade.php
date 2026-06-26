@@ -57,7 +57,6 @@
                 @enderror
             </div>
 
-            {{-- SENHA --}}
             <div class="form-group">
                 <input
                     type="password"
@@ -72,7 +71,6 @@
                 @enderror
             </div>
 
-            {{-- CONFIRMAR SENHA --}}
             <div class="form-group">
                 <input
                     type="password"

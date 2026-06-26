@@ -7,11 +7,9 @@
 <div class="profile-wrapper">
     <div class="profile-container">
 
-        {{-- HEADER --}}
         <div class="profile-header">
         </div>
 
-        {{-- CARD: EDITAR PERFIL --}}
         <div class="card">
             <h3>Informações do Perfil</h3>
             <p class="card-desc">Atualize seu nome e endereço de email.</p>
@@ -86,7 +84,6 @@
             </form>
         </div>
 
-        {{-- CARD: ALTERAR SENHA --}}
         <div class="card">
             <h3>Alterar Senha</h3>
             <p class="card-desc">Use uma senha longa e segura para proteger sua conta.</p>
@@ -151,7 +148,6 @@
             </form>
         </div>
 
-        {{-- CARD: LOGOUT --}}
         <div class="card">
             <h3>Sair da Conta</h3>
             <p class="card-desc" style="margin-bottom: 16px;">Encerre sua sessão no ChefBook.</p>
