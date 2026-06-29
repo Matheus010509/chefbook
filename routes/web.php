@@ -22,12 +22,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/login', [LoginController::class, 'login']);
 Route::get('/minhas-receitas', [MinhasReceitasController::class, 'minhasReceitas']);
 Route::get('/receitas-favoritas', [ReceitasFavoritasController::class, 'receitasFavoritas']);
 Route::get('/receitas-prontas', [ReceitasProntasController::class, 'receitasProntas']);
