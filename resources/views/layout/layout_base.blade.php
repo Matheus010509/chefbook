@@ -9,7 +9,7 @@
     @include('layout/menu_base')
      @yield('titulo')
     @yield('conteudo')
-@include('layout/scripts_js')
+    @include('layout/scripts_js')
 
 </body>
 </html>

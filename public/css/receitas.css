@@ -1,0 +1,129 @@
+.receita_form .form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.receita_form .form-control,
+.receita_form .form-select {
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    padding: 12px 15px;
+    background: #fff;
+}
+
+.receita_form .form-control:focus,
+.receita_form .form-select:focus {
+    border-color: #ff7e5f;
+    box-shadow: 0 0 0 0.2rem rgba(255, 126, 95, 0.15);
+}
+
+.receita_form .btn_1 {
+    background: #ff7e5f;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 45px;
+    transition: 0.3s;
+}
+
+.receita_form .btn_1:hover {
+    background: #e86a4d;
+    color: #fff;
+}
+
+/* Botão principal (laranja, arredondado) */
+.btn_1 {
+    display: inline-block;
+    background: #ff7e5f;
+    color: #fff !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn_1:hover {
+    background: #e86a4d;
+    color: #fff;
+}
+
+/* Cards de receita */
+.receita_card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.receita_card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.receita_card_img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.receita_card_body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.receita_card_body h5 {
+    font-family: inherit;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.receita_card_body p {
+    color: #777;
+    font-size: 14px;
+    margin: 0;
+}
+
+.receita_card_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px;
+}
+
+.btn_2 {
+    color: #ff7e5f;
+    border: 1px solid #ff7e5f;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn_2:hover {
+    background: #ff7e5f;
+    color: #fff;
+}
+
+.btn_3 {
+    background: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn_3:hover {
+    background: #dc3545;
+    color: #fff;
+}

@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
 <link rel="stylesheet" href="{{ asset('css/all.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/receitas.css') }}">
