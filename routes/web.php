@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\MinhasReceitasController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/receitas/{id}/update', [MinhasReceitasController::class, 'update'])->name('receitas.update');
     Route::get('/receitas/{id}/destroy', [MinhasReceitasController::class, 'destroy'])->name('receitas.destroy');
     Route::get('/receitas/search',       [MinhasReceitasController::class, 'search'])->name('receitas.search');
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/',               [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/create',         [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/',              [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/{id}/edit',      [AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/{id}/update',   [AdminController::class, 'update'])->name('admin.update');
+    Route::get('/{id}/destroy',   [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/search',         [AdminController::class, 'search'])->name('admin.search');
 });
 
 require __DIR__.'/auth.php';

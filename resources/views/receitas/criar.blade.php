@@ -48,7 +48,7 @@
                         <select name="categorias" class="form-select">
                             <option selected disabled>Selecione uma categoria</option>
                             <option value="almoco">Almoço</option>
-                            <option value="cafe_da_manha">Café da Manhã</option>
+                            <option value="sobremesa">Sobremesa</option>
                             <option value="janta">Janta</option>
                             <option value="lanche">Lanche</option>
                         </select>

@@ -62,7 +62,7 @@
                         <label class="form-label">Categoria</label>
                         <select name="categorias" class="form-select">
                             <option value="almoco" {{ $receita->categorias == 'almoco' ? 'selected' : '' }}>Almoço</option>
-                            <option value="cafe_da_manha" {{ $receita->categorias == 'cafe_da_manha' ? 'selected' : '' }}>Café da Manhã</option>
+                            <option value="sobremesa" {{ $receita->categorias == 'sobremesa' ? 'selected' : '' }}>Sobremesa</option>
                             <option value="janta" {{ $receita->categorias == 'janta' ? 'selected' : '' }}>Janta</option>
                             <option value="lanche" {{ $receita->categorias == 'lanche' ? 'selected' : '' }}>Lanche</option>
                         </select>

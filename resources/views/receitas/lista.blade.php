@@ -63,7 +63,7 @@
                         aria-controls="Special" aria-selected="true">Almoço <img src="img/icon/play.svg" alt="play"></a>
 
                     <a id="Breakfast-tab" data-toggle="tab" href="#Breakfast" role="tab" aria-controls="Breakfast"
-                        aria-selected="false">Café da Manhã <img src="img/icon/play.svg" alt="play"></a>
+                        aria-selected="false">Sobremesa <img src="img/icon/play.svg" alt="play"></a>
 
                     <a id="Launch-tab" data-toggle="tab" href="#Launch" role="tab" aria-controls="Launch"
                         aria-selected="false">Lanche <img src="img/icon/play.svg" alt="play"></a>
@@ -110,10 +110,10 @@
                 </div>
             </div>
 
-           {{-- cafe da manha --}}
+           {{-- sobremesa --}}
             <div class="tab-pane fade" id="Breakfast" role="tabpanel" aria-labelledby="Breakfast-tab">
                 <div class="row">
-                    @forelse ($receitas->where('categorias', 'cafe_da_manha') as $receita)
+                    @forelse ($receitas->where('categorias', 'sobremesa') as $receita)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card shadow-sm h-100" style="border-radius: 15px;">
                                 @if ($receita->imagem)
