@@ -12,9 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| ROTAS DE USUÁRIO NÃO AUTENTICADO (GUEST)
-|--------------------------------------------------------------------------
+ ROTAS DE USUÁRIO NÃO AUTENTICADO (GUEST)
 */
 
 Route::middleware('guest')->group(function () {
@@ -50,14 +48,12 @@ Route::middleware('guest')->group(function () {
 });
 
 /*
-|--------------------------------------------------------------------------
-| ROTAS DE USUÁRIO AUTENTICADO
-|--------------------------------------------------------------------------
+ROTAS DE USUÁRIO AUTENTICADO
 */
 
 Route::middleware('auth')->group(function () {
 
-    // 🔥 TELA PRINCIPAL DO SISTEMA
+    //  TELA PRINCIPAL DO SISTEMA
     Route::get('/inicio', function () {
         return view('inicio');
     })->name('inicio');

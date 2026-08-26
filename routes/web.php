@@ -16,6 +16,7 @@ Route::get('/dashboard', function () {
     return redirect('/inicio');
 })->middleware(['auth'])->name('dashboard');
 
+ //o usuario precisa estar logado para acessar o dashboard, se nao estiver logado, ele sera redirecionado para a tela de login
 Route::middleware('auth')->group(function () {
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/receitas-favoritas', [ReceitasFavoritasController::class, 'receitasFavoritas']);
     Route::get('/receitas-prontas', [ReceitasProntasController::class, 'receitasProntas']);
 
-    //CRUD DE RECEITAS ----------------------------------
+    //CRUD DE RECEITAS
     Route::get('/receitas',              [MinhasReceitasController::class, 'index'])->name('receitas.index');
     Route::get('/receitas/create',       [MinhasReceitasController::class, 'create'])->name('receitas.create');
     Route::post('/receitas',             [MinhasReceitasController::class, 'store'])->name('receitas.store');
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/receitas/{id}/destroy', [MinhasReceitasController::class, 'destroy'])->name('receitas.destroy');
     Route::get('/receitas/search',       [MinhasReceitasController::class, 'search'])->name('receitas.search');
 });
-
+ //Rotas de admin, uso o middleware admin para que apenas o usuário com id = 1, que é o admin, possa acessar essas rotas
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/',               [AdminController::class, 'index'])->name('admin.index');
     Route::get('/create',         [AdminController::class, 'create'])->name('admin.create');

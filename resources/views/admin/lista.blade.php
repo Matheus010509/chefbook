@@ -20,7 +20,7 @@
 
 @section('conteudo')
 
-@push('styles')
+@push('styles') 
 <link rel="stylesheet" href="{{ asset('css/receitas.css') }}">
 @endpush
 

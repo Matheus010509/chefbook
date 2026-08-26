@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Categoria</label>
+                        <label class="form-label">Categoria</label required>
                         <select name="categorias" class="form-select">
                             <option value="almoco" {{ $receita->categorias == 'almoco' ? 'selected' : '' }}>Almoço</option>
                             <option value="sobremesa" {{ $receita->categorias == 'sobremesa' ? 'selected' : '' }}>Sobremesa</option>

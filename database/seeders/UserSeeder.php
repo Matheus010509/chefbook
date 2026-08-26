@@ -10,10 +10,10 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::create([
-            'name' => 'Matheus Nascimento',
+        User::create([ // Cria o usuário admin com id = 1
+            'name' => 'admin',
             'email' => 'matheus@gmail.com',
-            'password' => Hash::make('12345678'), //nao pd salvar a senha direto, como os outros dados, ai usa o hash
+            'password' => Hash::make('01052009'), //nao pd salvar a senha direto, como os outros dados, ai usa o hash
         ]);
 
     }

@@ -22,14 +22,14 @@ return new class extends Migration
 
 /* Comentei pq ao conversar com o Paim ele me disse para deixar as categorias cadastradas ja 
 
-            $table->unsignedBigInteger('categoria_id'); //ele esta criando na tabela receitas uma coluna categoria_id 
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade'); //aqui ele esta criando uma chave estrangeira que referencia a coluna 
-*/            //id da tabela categorias, e se a categoria for deletada, as receitas associadas a ela também serão deletadas (cascade)
+            $table->unsignedBigInteger('categoria_id');  
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade'); 
+*/          
   
 
 $table->unsignedBigInteger('users_id'); 
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-        
+//aqui esta criando uma chave estrangeira que referencia o users_id, da tabela user. Se o user for deletado, as receitas associadas a ele tmb sera deletada        
           
             $table->timestamps();
         });

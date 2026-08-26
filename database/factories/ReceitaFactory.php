@@ -18,7 +18,7 @@ class ReceitaFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return [ //aqui eu defino o tipo dos dados que quero que sejam gerados automaticamente
             'titulo' => fake()->sentence(3),
             'ingredientes' => fake()->paragraph(),
             'modo_preparo' => fake()->paragraph(),

@@ -137,7 +137,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-12"><p class="text-muted">Nenhuma receita de café da manhã cadastrada.</p></div>
+                        <div class="col-12"><p class="text-muted">Nenhuma receita de sobremesa cadastrada.</p></div>
                     @endforelse
                 </div>
             </div>
