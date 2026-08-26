@@ -13,7 +13,10 @@
                         <p>Seja bem vindo ao seu restaurente virtual, aqui voce pode organizar e centralizar suas receitas em um so lugar!</p>
                         <div class="banner_btn">
                             <div class="banner_btn_iner">
-                                <a href="/minhas-receitas" class="btn_2">Minhas receitas <img src="img/icon/left_1.svg" alt=""></a>
+                           <a href="/minhas-receitas" class="meu-botao-receitas">
+    Minhas receitas
+    <img src="img/icon/left_1.svg" alt="">
+</a>
                             </div>
                         </div>
                     </div>

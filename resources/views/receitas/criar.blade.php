@@ -44,15 +44,16 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Categoria</label>
-                        <select name="categorias" class="form-select">
-                            <option selected disabled>Selecione uma categoria</option>
-                            <option value="almoco">Almoço</option>
-                            <option value="sobremesa">Sobremesa</option>
-                            <option value="janta">Janta</option>
-                            <option value="lanche">Lanche</option>
-                        </select>
-                    </div>
+    <label class="form-label">Categoria</label>
+
+    <select name="categorias" class="form-select select-categoria">
+        <option selected disabled>Selecione uma categoria</option>
+        <option value="almoco">Almoço</option>
+        <option value="sobremesa">Sobremesa</option>
+        <option value="janta">Janta</option>
+        <option value="lanche">Lanche</option>
+    </select>
+</div>
 
                     <div class="mb-3">
                         <label class="form-label">Ingredientes</label>
@@ -64,10 +65,10 @@
                         <textarea name="modo_preparo" class="form-control" rows="4" placeholder="Descreva o preparo"></textarea>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="form-label">Imagem da Receita</label>
-                        <input type="file" name="imagem" class="form-control">
-                    </div>
+                  <div class="mb-5">
+    <label class="form-label">Imagem da Receita</label>
+    <input type="file" name="imagem" class="form-control input-imagem">
+</div>
 
                     <div class="text-center">
                         <button type="submit" class="btn_1">

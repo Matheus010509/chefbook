@@ -9,7 +9,9 @@ body {
     display: flex;
     height: 100vh;
 }
-
+.select-categoria {
+    height: 50px;
+}
 .left {
     width: 55%;
    background: url('../img/fundo_cadastro.jpg') no-repeat center;

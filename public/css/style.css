@@ -608,14 +608,19 @@ ul {
 
 /* line 82, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_button.scss */
 .btn_2 {
-  display: inline-block;
-  font-size: 15px;
-  color: #1d272f;
-  text-transform: capitalize;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  position: relative;
+    display: inline-block;
+    font-size: 15px;
+    color: #1d272f;
+    text-transform: capitalize;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    position: relative;
+
+    border-top: none;
+    border-bottom: none;
+    text-decoration: none;
 }
+
 
 /* line 89, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_button.scss */
 .btn_2:after {
@@ -2763,6 +2768,47 @@ ul {
 .banner_part .banner_text .banner_btn_iner:hover .btn_2:after {
   right: 25px;
   background-color: #ff6426;
+}
+.meu-banner-botao {
+    display: inline-block;
+    position: relative;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.meu-banner-botao::before,
+.meu-banner-botao::after {
+    display: none !important;
+    content: none !important;
+}
+
+.meu-botao-receitas {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 20px;
+    font-size: 15px;
+    color: #1d272f;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent;
+    position: relative;
+}
+
+.meu-botao-receitas::before,
+.meu-botao-receitas::after {
+    display: none !important;
+    content: none !important;
+}
+
+.meu-botao-receitas img {
+    margin-left: 10px;
+}
+
+.meu-botao-receitas:hover {
+    color: #ff6426;
+    text-decoration: none !important;
 }
 
 /* line 170, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_banner.scss */

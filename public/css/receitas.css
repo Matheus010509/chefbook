@@ -108,11 +108,18 @@
     transition: 0.3s;
 }
 
+
 .btn_2:hover {
     background: #ff7e5f;
     color: #fff;
 }
+.select-categoria {
+    height: 50px;
+}
 
+.input-imagem {
+    height: 55px;
+}
 .btn_3 {
     background: transparent;
     border: 1px solid #dc3545;

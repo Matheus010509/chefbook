@@ -59,8 +59,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Categoria</label required>
-                        <select name="categorias" class="form-select">
+                           <label class="form-label">Categoria</label required>
+                         <select name="categorias" class="form-select select-categoria">
                             <option value="almoco" {{ $receita->categorias == 'almoco' ? 'selected' : '' }}>Almoço</option>
                             <option value="sobremesa" {{ $receita->categorias == 'sobremesa' ? 'selected' : '' }}>Sobremesa</option>
                             <option value="janta" {{ $receita->categorias == 'janta' ? 'selected' : '' }}>Janta</option>
@@ -79,8 +79,8 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label">Trocar Imagem</label>
-                        <input type="file" name="imagem" class="form-control">
+                          <label class="form-label">Imagem da Receita</label>
+    <input type="file" name="imagem" class="form-control input-imagem">
                     </div>
 
                     <div class="d-flex gap-2 justify-content-center">
