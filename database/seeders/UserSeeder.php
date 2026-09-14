@@ -12,8 +12,8 @@ class UserSeeder extends Seeder
     {
         User::create([ // Cria o usuário admin com id = 1
             'name' => 'admin',
-            'email' => 'matheus@gmail.com',
-            'password' => Hash::make('01052009'), //nao pd salvar a senha direto, como os outros dados, ai usa o hash
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('789456123'), //nao pd salvar a senha direto, como os outros dados, ai usa o hash
         ]);
 
     }

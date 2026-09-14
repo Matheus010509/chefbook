@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Receita;
 use App\Models\User;
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,14 +19,14 @@ class ReceitaFactory extends Factory
      */
     public function definition(): array
     {
-        return [ //aqui eu defino o tipo dos dados que quero que sejam gerados automaticamente
+        return [
             'titulo' => fake()->sentence(3),
             'ingredientes' => fake()->paragraph(),
             'modo_preparo' => fake()->paragraph(),
             'imagem' => 'default.jpg',
             'favorito' => fake()->boolean(),
-            'categorias' => fake()->randomElement(['almoco', 'janta', 'lanche', 'sobremesa']),
-
-            'users_id' => 1,   ];
+            'categoria_id' => Categoria::inRandomOrder()->first()->id,
+            'users_id' => 1,
+        ];
     }
 }
