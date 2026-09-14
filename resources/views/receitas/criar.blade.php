@@ -44,16 +44,20 @@
                     </div>
 
                     <div class="mb-3">
-    <label class="form-label">Categoria</label>
-
-    <select name="categorias" class="form-select select-categoria">
-        <option selected disabled>Selecione uma categoria</option>
-        <option value="almoco">Almoço</option>
-        <option value="sobremesa">Sobremesa</option>
-        <option value="janta">Janta</option>
-        <option value="lanche">Lanche</option>
-    </select>
-</div>
+                        <label class="form-label">Categoria</label>
+                        <select name="categoria_id" class="form-select select-categoria">
+                            <option selected disabled>Selecione uma categoria</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                            @endforeach
+                        </select>
+                        @if ($categorias->isEmpty())
+                            <small class="text-muted">
+                                Nenhuma categoria cadastrada ainda.
+                                <a href="{{ route('categorias.create') }}">Criar categoria</a>
+                            </small>
+                        @endif
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">Ingredientes</label>
@@ -66,14 +70,18 @@
                     </div>
 
                   <div class="mb-5">
-    <label class="form-label">Imagem da Receita</label>
-    <input type="file" name="imagem" class="form-control input-imagem">
-</div>
+                    <label class="form-label">Imagem da Receita</label>
+                    <input type="file" name="imagem" class="form-control input-imagem">
+                  </div>
 
                     <div class="text-center">
                         <button type="submit" class="btn_1">
                             Salvar Receita
                         </button>
+
+                         <a href="{{ route('receitas.index') }}" class="btn_2">
+            Voltar
+        </a>
                     </div>
 
                 </form>

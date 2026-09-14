@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MinhasReceitasController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReceitasFavoritasController;
 use App\Http\Controllers\ReceitasProntasController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 
     //Rotas de receitas
     Route::get('/minhas-receitas', [MinhasReceitasController::class, 'minhasReceitas']);
-    Route::get('/receitas-favoritas', [ReceitasFavoritasController::class, 'receitasFavoritas']);
     Route::get('/receitas-prontas', [ReceitasProntasController::class, 'receitasProntas']);
 
     //CRUD DE RECEITAS
@@ -36,6 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/receitas/{id}/update', [MinhasReceitasController::class, 'update'])->name('receitas.update');
     Route::get('/receitas/{id}/destroy', [MinhasReceitasController::class, 'destroy'])->name('receitas.destroy');
     Route::get('/receitas/search',       [MinhasReceitasController::class, 'search'])->name('receitas.search');
+
+    //CRUD DE CATEGORIAS
+    Route::get('/categorias',              [CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/categorias/create',       [CategoriaController::class, 'create'])->name('categorias.create');
+    Route::post('/categorias',             [CategoriaController::class, 'store'])->name('categorias.store');
+    Route::get('/categorias/{id}/edit',    [CategoriaController::class, 'edit'])->name('categorias.edit');
+    Route::post('/categorias/{id}/update', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::get('/categorias/{id}/destroy', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
 });
  //Rotas de admin, uso o middleware admin para que apenas o usuário com id = 1, que é o admin, possa acessar essas rotas
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {

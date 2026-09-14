@@ -11,28 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('receitas', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->text('ingredientes');
-            $table->text('modo_preparo');
-            $table->string('imagem')->nullable();
-            $table->boolean('favorito')->default(false);
-            $table->enum('categorias', ['almoco', 'janta', 'lanche', 'sobremesa']);
+      Schema::create('receitas', function (Blueprint $table) {
+    $table->id();
+    $table->string('titulo');
+    $table->text('ingredientes');
+    $table->text('modo_preparo');
+    $table->string('imagem')->nullable();
+    $table->boolean('favorito')->default(false);
 
-/* Comentei pq ao conversar com o Paim ele me disse para deixar as categorias cadastradas ja 
+    // Categoria da receita (1 categoria pode ter várias receitas)
+    $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('set null');
 
-            $table->unsignedBigInteger('categoria_id');  
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade'); 
-*/          
-  
+    // Se o usuário for deletado, as receitas associadas a ele também serão deletadas
+    $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
 
-$table->unsignedBigInteger('users_id'); 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-//aqui esta criando uma chave estrangeira que referencia o users_id, da tabela user. Se o user for deletado, as receitas associadas a ele tmb sera deletada        
-          
-            $table->timestamps();
-        });
+    $table->timestamps();
+});
     }
         
 

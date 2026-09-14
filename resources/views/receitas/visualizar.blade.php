@@ -59,13 +59,20 @@
                     </div>
 
                     <div class="mb-3">
-                           <label class="form-label">Categoria</label required>
-                         <select name="categorias" class="form-select select-categoria">
-                            <option value="almoco" {{ $receita->categorias == 'almoco' ? 'selected' : '' }}>Almoço</option>
-                            <option value="sobremesa" {{ $receita->categorias == 'sobremesa' ? 'selected' : '' }}>Sobremesa</option>
-                            <option value="janta" {{ $receita->categorias == 'janta' ? 'selected' : '' }}>Janta</option>
-                            <option value="lanche" {{ $receita->categorias == 'lanche' ? 'selected' : '' }}>Lanche</option>
+                        <label class="form-label">Categoria</label>
+                        <select name="categoria_id" class="form-select select-categoria">
+                            <option value="" disabled>Selecione uma categoria</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id }}" {{ $receita->categoria_id == $categoria->id ? 'selected' : '' }}>
+                                    {{ $categoria->nome }}
+                                </option>
+                            @endforeach
                         </select>
+                        @if ($categorias->isEmpty())
+                            <small class="text-muted">
+                                Nenhuma categoria cadastrada ainda.
+                            </small>
+                        @endif
                     </div>
 
                     <div class="mb-3">
@@ -79,8 +86,8 @@
                     </div>
 
                     <div class="mb-4">
-                          <label class="form-label">Imagem da Receita</label>
-    <input type="file" name="imagem" class="form-control input-imagem">
+                        <label class="form-label">Imagem da Receita</label>
+                        <input type="file" name="imagem" class="form-control input-imagem">
                     </div>
 
                     <div class="d-flex gap-2 justify-content-center">

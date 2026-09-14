@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Receita extends Model
 {
-    use HasFactory; 
+    use HasFactory;
 
     protected $fillable = [
         'titulo',
@@ -15,7 +15,17 @@ class Receita extends Model
         'modo_preparo',
         'imagem',
         'favorito',
-        'categorias',
+        'categoria_id',
         'users_id',
     ];
+
+    public function categoria() //relacao
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function user() //
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }
