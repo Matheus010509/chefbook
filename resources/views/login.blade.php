@@ -55,19 +55,6 @@
             @enderror
         </div>
 
-        <div class="remember-row">
-            <label for="remember_me">
-                <input type="checkbox" id="remember_me" name="remember">
-                Lembrar de mim
-            </label>
-
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="forgot-link">
-                    Esqueci minha senha
-                </a>
-            @endif
-        </div>
-
         <button type="submit" class="btn">Entrar</button>
 
         <div class="link">
