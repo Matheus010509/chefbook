@@ -18,6 +18,17 @@ class Receita extends Model
         'categoria_id',
         'users_id',
     ];
+      protected $appends = ['imagem_url'];
+
+    public function getImagemUrlAttribute()
+    {
+        if (!$this->imagem) {
+            return null;
+        }
+
+        return asset('storage/' . $this->imagem);
+    }
+    
 
     public function categoria() //relacao
     {

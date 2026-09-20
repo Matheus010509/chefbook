@@ -6,20 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('categorias', function (Blueprint $table) {
-        $table->id();
-        $table->string('nome')->unique();
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->timestamps();
 
-public function down(): void
-{
-    Schema::dropIfExists('categorias');
-}
+            // único por usuário: dois usuários podem ter categoria com mesmo nome,
+            // mas o mesmo usuário não pode repetir o nome
+            $table->unique(['nome', 'user_id']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('categorias');
+    }
 };

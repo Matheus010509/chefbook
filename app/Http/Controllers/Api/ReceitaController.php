@@ -29,10 +29,14 @@ class ReceitaController extends Controller
     }
 
     // GET /api/receitas-por-categoria - tudo agrupado, pro Flutter salvar no SharedPreferences
-    public function porCategoria()
-    {
-        $categorias = Categoria::with('receitas')->get();
+   public function porCategoria(Request $request)
+{
+    $categorias = Categoria::where('user_id', $request->user()->id)
+        ->with(['receitas' => function ($query) use ($request) {
+            $query->where('users_id', $request->user()->id);
+        }])
+        ->get();
 
-        return response()->json($categorias);
-    }
+    return response()->json($categorias);
+}
 }

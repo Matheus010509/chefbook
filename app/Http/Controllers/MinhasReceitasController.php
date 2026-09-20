@@ -19,8 +19,8 @@ class MinhasReceitasController extends Controller
         // Busca apenas as receitas do usuário autenticado, já trazendo a categoria junto
         $receitas = Receita::with('categoria')->where('users_id', Auth::id())->get();
 
-        // Busca todas as categorias, usadas para montar as abas na view
-        $categorias = Categoria::orderBy('nome')->get();
+        // Busca apenas as categorias do usuário autenticado, usadas para montar as abas na view
+        $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
         // Retorna a view de listagem, com filtro vazio
         return view('receitas.lista', [
@@ -33,8 +33,8 @@ class MinhasReceitasController extends Controller
     // Exibe o formulario de cadastro de uma nova receita
     public function create()
     {
-        // Categorias disponiveis para o select do formulario
-        $categorias = Categoria::orderBy('nome')->get();
+        // Categorias disponiveis para o select do formulario (só as do usuário logado)
+        $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
         return view('receitas.criar', ['categorias' => $categorias]);
     }
 
@@ -75,11 +75,14 @@ class MinhasReceitasController extends Controller
     public function view($id)
     {
         try {
-            // Busca a receita pelo id recebido na rota, já com a categoria junto
-            $receita = Receita::with('categoria')->find($id);
+            // Busca a receita pelo id, garantindo que pertence ao usuário logado
+            $receita = Receita::with('categoria')
+                ->where('id', $id)
+                ->where('users_id', Auth::id())
+                ->firstOrFail();
 
-            // Categorias disponiveis para o select do formulario de edição
-            $categorias = Categoria::orderBy('nome')->get();
+            // Categorias disponiveis para o select do formulario de edição (só as do usuário)
+            $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
             return view('receitas.visualizar', [
                 'receita' => $receita,
@@ -95,8 +98,10 @@ class MinhasReceitasController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            // acha a receita que sera atualizada
-            $receita = Receita::find($id);
+            // acha a receita que sera atualizada, garantindo que é do usuário logado
+            $receita = Receita::where('id', $id)
+                ->where('users_id', Auth::id())
+                ->firstOrFail();
 
             // atualiza os campos com os dados do form
             $receita->titulo = $request->input('titulo');
@@ -129,8 +134,11 @@ class MinhasReceitasController extends Controller
     public function destroy($id)
     {
         try {
-            // Busca e exclui a receita
-            $receita = Receita::find($id);
+            // Busca e exclui a receita, garantindo que pertence ao usuário logado
+            $receita = Receita::where('id', $id)
+                ->where('users_id', Auth::id())
+                ->firstOrFail();
+
             $receita->delete();
 
             session()->flash('msg', 'Receita excluída com sucesso!');
@@ -154,7 +162,7 @@ class MinhasReceitasController extends Controller
                        ->orderBy('id')
                        ->get();
 
-        $categorias = Categoria::orderBy('nome')->get();
+        $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
         // Retorna a mesma view de listagem, agora com os resultados filtrados
         return view('receitas.lista', [
