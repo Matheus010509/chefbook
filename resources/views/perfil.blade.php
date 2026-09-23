@@ -10,13 +10,13 @@
         <div class="profile-header">
         </div>
 
-        //editar perfil
+        <!-- editar perfil -->
         
         <div class="card">
             <h3>Informações do Perfil</h3>
             <p class="card-desc">Atualize seu nome e endereço de email.</p>
 
-            <form method="POST" action="{{ route('profile.update') }}"> //chamo a funcao do breeze de atualizar perfil
+            <form method="POST" action="{{ route('profile.update') }}"> <!-- chamo a funcao do breeze de atualizar perfil -->
                 @csrf
                 @method('PATCH')
 
@@ -57,7 +57,7 @@
                 <div class="save-row">
                     <button type="submit" class="btn-primary">Salvar</button>
                     @if (session('status') === 'profile-updated')
-                        <span class="saved-msg" id="profile-saved">✓ Salvo com sucesso</span> //mensagem de sucesso ao salvar o perfil
+                        <span class="saved-msg" id="profile-saved">✓ Salvo com sucesso</span> <!-- mensagem de sucesso ao salvar o perfil -->
                         <script>
                             const el = document.getElementById('profile-saved');
                             el.style.display = 'inline';
@@ -68,12 +68,12 @@
             </form>
         </div>
 
-        // alterar senha
+        <!-- alterar senha -->
         <div class="card">
             <h3>Alterar Senha</h3>
             <p class="card-desc">Use uma senha longa e segura para proteger sua conta.</p>
 
-            <form method="POST" action="{{ route('password.update') }}"> //chamo a funcao do breeze de atualizar senha
+            <form method="POST" action="{{ route('password.update') }}"> <!-- chamo a funcao do breeze de atualizar senha -->
                 @csrf
                 @method('PUT')
 
@@ -86,7 +86,7 @@
                         autocomplete="current-password"
                         class="{{ $errors->updatePassword->has('current_password') ? 'input-error' : '' }}"
                     >
-                    @if ($errors->updatePassword->has('current_password')) //vejo se tem algum erro na senha atual
+                    @if ($errors->updatePassword->has('current_password')) <!-- vejo se tem algum erro na senha atual -->
                         <div class="field-error">{{ $errors->updatePassword->first('current_password') }}</div>
                     @endif
                 </div>
@@ -100,7 +100,7 @@
                         autocomplete="new-password"
                         class="{{ $errors->updatePassword->has('password') ? 'input-error' : '' }}"
                     >
-                    @if ($errors->updatePassword->has('password')) //na senha nova
+                    @if ($errors->updatePassword->has('password')) <!-- na senha nova -->
                         <div class="field-error">{{ $errors->updatePassword->first('password') }}</div>
                     @endif
                 </div>
@@ -114,7 +114,7 @@
                         autocomplete="new-password"
                         class="{{ $errors->updatePassword->has('password_confirmation') ? 'input-error' : '' }}"
                     >
-                    @if ($errors->updatePassword->has('password_confirmation')) //e na confirmacao da senha nova
+                    @if ($errors->updatePassword->has('password_confirmation')) <!-- e na confirmacao da senha nova -->
                         <div class="field-error">{{ $errors->updatePassword->first('password_confirmation') }}</div>
                     @endif
                 </div>
@@ -122,7 +122,7 @@
                 <div class="save-row">
                     <button type="submit" class="btn-primary">Salvar</button>
                     @if (session('status') === 'password-updated')
-                        <span class="saved-msg" id="password-saved">✓ Senha atualizada</span> //msm coisa, dou uma mensagem rapida
+                        <span class="saved-msg" id="password-saved">✓ Senha atualizada</span> <!-- msm coisa, dou uma mensagem rapida -->
                         <script>
                             const el2 = document.getElementById('password-saved');
                             el2.style.display = 'inline';
@@ -133,11 +133,11 @@
             </form>
         </div>
 
-        //logout
+        <!-- logout -->
         <div class="card">
             <h3>Sair da Conta</h3>
             <p class="card-desc" style="margin-bottom: 16px;">Encerre sua sessão no ChefBook.</p>
-            <form method="POST" action="{{ route('logout') }}"> //chamo a funcao do breeze de logout
+            <form method="POST" action="{{ route('logout') }}"> <!-- chamo a funcao do breeze de logout -->
                 @csrf
                 <button type="submit" class="btn-logout">Sair da Conta</button>
             </form>

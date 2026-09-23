@@ -31,8 +31,8 @@
             <div class="alert alert-danger">{{ session('erro') }}</div>
         @endif
 
-        // Qual aba abre: a primeira com resultado da busca, ou a primeira da lista 
-               @php
+        <!-- Qual aba abre: a primeira com resultado da busca, ou a primeira da lista -->
+        @php
             $categoriaAtivaId = (!empty($filtro)
                 ? $categorias->first(fn ($c) => $receitas->where('categoria_id', $c->id)->isNotEmpty())
                 : null
@@ -120,7 +120,7 @@
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="card shadow-sm h-100" style="border-radius: 15px;">
 
-                                   @if ($receita->imagem)  //para exibir a imagem da receita, se houver
+                                   @if ($receita->imagem)  <!-- para exibir a imagem da receita, se houver -->
                                      <img src="{{ asset('storage/' . $receita->imagem) }}" class="card-img-top"
                                         style="height: 180px; width: 100%; object-fit: contain; background-color: #f8f9fa; border-radius: 15px 15px 0 0;"
                                           alt="{{ $receita->titulo }}">
@@ -134,8 +134,8 @@
                                             Ver / Editar
                                         </a>
                                         <form action="{{ route('receitas.destroy', $receita->id) }}" method="GET"
-                                              onsubmit="return confirm('Tem certeza que deseja excluir esta receita?');"> //mensagem de confirmação antes de excluir a receita
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button> //botao de excluir receita
+                                              onsubmit="return confirm('Tem certeza que deseja excluir esta receita?');"> <!-- mensagem de confirmação antes de excluir a receita -->
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button> <!-- botao de excluir receita -->
                                         </form>
                                     </div>
                                 </div>

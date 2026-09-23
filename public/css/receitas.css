@@ -134,3 +134,59 @@
     background: #dc3545;
     color: #fff;
 }
+/* Menu no celular*/
+@media (max-width: 991px) {
+  .navbar-brand img {
+    max-height: 40px;
+    width: auto;
+  }
+
+  .main_menu .navbar-collapse {
+    background: #fff;
+    padding: 8px 16px;
+    margin-top: 8px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .main_menu .navbar-nav .nav-link {
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+  }
+}
+
+/* Banner */
+@media (max-width: 991px) {
+  .banner_part .banner_text {
+    height: auto;        
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+
+  .banner_part h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner_part h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Imagens e cards */
+.about_part img,
+.single_blog_img img {
+  width: 100%;
+  height: auto;
+}
+
+.single_blog_img img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;     /* deixa os cards com a mesma altura */
+}
+
+.single_blog_item,
+.about_part .row > div {
+  margin-bottom: 24px;
+}

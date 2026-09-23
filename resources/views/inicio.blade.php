@@ -15,7 +15,7 @@
                             <div class="banner_btn_iner">
                            <a href="/minhas-receitas" class="meu-botao-receitas">
     Minhas receitas
-    <img src="img/icon/left_1.svg" alt="">
+   <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
 </a>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-sm-4 col-lg-5 offset-lg-1">
-                <img src="img/brigadeiro.webp" alt="">
+                <img src="{{ asset('img/brigadeiro.webp') }}" alt="">
             </div>
             <div class="col-sm-8 col-lg-4">
                 <h2>Brigadeiro</h2>
