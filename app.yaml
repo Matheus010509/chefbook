@@ -1,0 +1,23 @@
+kind: wasmer.io/App.v0
+owner: matheus010509
+name: chefbook
+package: .
+
+
+env:
+  APP_ENV: production
+  APP_DEBUG: "false"
+  APP_URL: https://chefbook.wasmer.app
+  LOG_CHANNEL: stderr
+  SESSION_DRIVER: database
+  CACHE_STORE: database
+  QUEUE_CONNECTION: sync
+  DB_CONNECTION: mysql
+
+capabilities:
+  database:
+    engine: mysql
+
+scaling:
+  mode: single_concurrency
+app_id: da_nzrI7tJU7PDo
