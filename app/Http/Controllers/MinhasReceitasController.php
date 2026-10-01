@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Receita;
 use App\Models\Categoria;
+use App\Services\ImageService;
 
 class MinhasReceitasController extends Controller
 {
@@ -39,7 +41,7 @@ class MinhasReceitasController extends Controller
     }
 
     // Recebe os dados do formulario e salva no banco
-    public function store(Request $request)
+    public function store(Request $request, ImageService $images)
     {
         try {
             $receita = new Receita();
@@ -54,10 +56,11 @@ class MinhasReceitasController extends Controller
             // Vincula a receita ao user logado
             $receita->users_id = Auth::id();
 
-            // Se veio uma imagem, salva storage o caminho e no banco
+            // Se veio uma imagem, envia para o Cloudinary e guarda a URL e o public_id no banco
             if ($request->hasFile('imagem')) {
-                $path = $request->file('imagem')->store('receitas', 'public');
-                $receita->imagem = $path;
+                $img = $images->upload($request->file('imagem'));
+                $receita->imagem = $img['url'];
+                $receita->imagem_public_id = $img['public_id'];
             }
 
             $receita->save();
@@ -95,7 +98,7 @@ class MinhasReceitasController extends Controller
     }
 
     // Atualiza os dados de uma receita existente
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, ImageService $images)
     {
         try {
             // acha a receita que sera atualizada, garantindo que é do usuário logado
@@ -112,10 +115,13 @@ class MinhasReceitasController extends Controller
             // mantem o valor atual de favorito (false). Deixei apenas no movel para favoritar
             $receita->favorito = $request->input('favorito', $receita->favorito);
 
-            // se veio uma nova imagem, substitui a atual
+            // se veio uma nova imagem, apaga a antiga do Cloudinary e envia a nova
             if ($request->hasFile('imagem')) {
-                $path = $request->file('imagem')->store('receitas', 'public');
-                $receita->imagem = $path;
+                $images->delete($receita->imagem_public_id);
+
+                $img = $images->upload($request->file('imagem'));
+                $receita->imagem = $img['url'];
+                $receita->imagem_public_id = $img['public_id'];
             }
 
             // salva as mudanças no banco
@@ -131,13 +137,16 @@ class MinhasReceitasController extends Controller
     }
 
     // Remove uma receita do bd
-    public function destroy($id)
+    public function destroy($id, ImageService $images)
     {
         try {
             // Busca e exclui a receita, garantindo que pertence ao usuário logado
             $receita = Receita::where('id', $id)
                 ->where('users_id', Auth::id())
                 ->firstOrFail();
+
+            // apaga a imagem do Cloudinary (se existir) antes de remover a receita
+            $images->delete($receita->imagem_public_id);
 
             $receita->delete();
 
@@ -171,4 +180,5 @@ class MinhasReceitasController extends Controller
             'filtro' => $filtro,
         ]);
     }
+  
 }

@@ -17,6 +17,7 @@ return new class extends Migration
     $table->text('ingredientes');
     $table->text('modo_preparo');
     $table->string('imagem')->nullable();
+    $table->string('imagem_public_id')->nullable();
     $table->boolean('favorito')->default(false);
 
     // Categoria da receita (1 categoria pode ter várias receitas)

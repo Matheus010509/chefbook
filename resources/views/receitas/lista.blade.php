@@ -121,7 +121,7 @@
                                 <div class="card shadow-sm h-100" style="border-radius: 15px;">
 
                                    @if ($receita->imagem)  <!-- para exibir a imagem da receita, se houver -->
-                                     <img src="{{ asset('storage/' . $receita->imagem) }}" class="card-img-top"
+                                     <img src="{{ $receita->imagem }}" class="card-img-top"
                                         style="height: 180px; width: 100%; object-fit: contain; background-color: #f8f9fa; border-radius: 15px 15px 0 0;"
                                           alt="{{ $receita->titulo }}">
                                     @endif

@@ -45,7 +45,7 @@
 
                 @if ($receita->imagem)
                     <div class="text-center mb-4">
-                        <img src="{{ asset('storage/' . $receita->imagem) }}" alt="{{ $receita->titulo }}"
+                         <img src="{{ $receita->imagem }}" alt="{{ $receita->titulo }}"
                              style="max-width: 100%; max-height: 250px; border-radius: 10px;">
                     </div>
                 @endif

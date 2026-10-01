@@ -14,6 +14,7 @@ class Receita extends Model
         'ingredientes',
         'modo_preparo',
         'imagem',
+        'imagem_public_id',
         'favorito',
         'categoria_id',
         'users_id',
@@ -26,7 +27,7 @@ class Receita extends Model
             return null;
         }
 
-        return asset('storage/' . $this->imagem);
+        return $this->imagem;   //  URL completa do Cloudinary
     }
     
 
