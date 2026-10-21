@@ -14,7 +14,7 @@
                         id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/inicio">Inicio</a>
+                                <a class="nav-link" href="/inicio">Início</a>
                             </li>
 
                             <li class="nav-item">

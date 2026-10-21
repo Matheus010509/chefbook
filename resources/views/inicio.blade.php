@@ -10,7 +10,7 @@
                     <div class="banner_text_iner">
                         <h5>Seu livro de receitas</h5>
                         <h1>ChefBook</h1>
-                        <p>Seja bem vindo ao seu restaurente virtual, aqui voce pode organizar e centralizar suas receitas em um so lugar!</p>
+                        <p>Seja bem vindo(a) ao seu restaurente virtual, aqui você pode organizar e centralizar suas receitas em um só lugar!</p>
                         <div class="banner_btn">
                             <div class="banner_btn_iner">
                            <a href="/minhas-receitas" class="meu-botao-receitas">
@@ -41,21 +41,23 @@
                 <img src="{{ asset('img/brigadeiro.webp') }}" alt="">
             </div>
             <div class="col-sm-8 col-lg-4">
-                <h2>Brigadeiro</h2>
-
-                <h4>Ingredientes</h4>
-                <p>
-                    1 lata de leite condensado <br>
-                    7 colheres de chocolate <br>
-                    1 colher de manteiga <br>
-                    Granulado
-                </p>
-
-                <h4>Modo de preparo</h4>
-                <p>
-                    Misture tudo na panela, mexa até desgrudar,
-                    deixe esfriar, enrole e passe no granulado.
-                </p>
+              <h2>Brigadeiro</h2>
+<br>
+<h4>Ingredientes</h4>
+<p>
+    1 lata de leite condensado <br>
+    1/2 caixa de creme de leite <br>
+    7 colheres de sopa de chocolate em pó <br>
+    1 colher de sopa de manteiga <br>
+    Granulado
+</p>
+<br>
+<h4>Modo de preparo</h4>
+<p>
+    Misture o leite condensado, o creme de leite, o chocolate em pó e a manteiga em uma panela.
+    Leve ao fogo baixo, mexendo sempre, até desgrudar do fundo da panela.
+    Deixe esfriar, enrole em bolinhas e passe no granulado.
+</p>
             </div>
         </div>
     </div>
@@ -96,7 +98,7 @@
                         <img src="{{ asset('img/cookie.jpg') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="receitas-prontas">Cookie</a></h3>
+                        <h3><a href="receitas-prontas">Cookies</a></h3>
                         <a href="receitas-prontas" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">

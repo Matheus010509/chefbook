@@ -31,7 +31,7 @@
             <div class="alert alert-danger">{{ session('erro') }}</div>
         @endif
 
-        <!-- Qual aba abre: a primeira com resultado da busca, ou a primeira da lista -->
+        {{-- Qual aba abre: a primeira com resultado da busca, ou a primeira da lista --}}
         @php
             $categoriaAtivaId = (!empty($filtro)
                 ? $categorias->first(fn ($c) => $receitas->where('categoria_id', $c->id)->isNotEmpty())
@@ -44,15 +44,19 @@
                 <div class="section_tittle">
                     <p>Minhas</p>
                     <h2>Receitas</h2>
-                    <a href="{{ route('receitas.create') }}" class="btn text-white" style="background: #ff7e5f; font-weight: bold;">
-                        Adicionar Receita
-                    </a>
 
-                    <a href="{{ route('categorias.create') }}" class="btn text-white" style="background: #ff7e5f; font-weight: bold;">
-                        Adicionar Categoria
-                    </a>
+                    <div class="d-flex flex-wrap mb-4" style="gap: 10px;">
+                        <a href="{{ route('receitas.create') }}" class="btn text-white" style="background: #ff7e5f; font-weight: bold;">
+                            Adicionar Receita
+                        </a>
+
+                        <a href="{{ route('categorias.create') }}" class="btn text-white" style="background: #ff7e5f; font-weight: bold;">
+                            Adicionar Categoria
+                        </a>
+                    </div>
                 </div>
             </div>
+
             <div class="col-lg-6">
 
                 <form action="{{ route('receitas.search') }}" method="GET" class="d-flex mb-3" style="gap: 10px;">
@@ -71,9 +75,10 @@
                 @if ($categorias->isEmpty())
                     <p class="text-muted">Você ainda não criou nenhuma categoria.</p>
                 @else
-                    <div class="nav nav-tabs food_menu_nav" id="myTab" role="tablist"> 
+                    <div class="nav nav-tabs food_menu_nav mt-3 mb-4" id="myTab" role="tablist" style="gap: 10px 20px;">
                         @foreach ($categorias as $categoria)
-                            <a class="{{ $categoria->id === $categoriaAtivaId ? 'active' : '' }}" #para eu fazer um controle das abas de categoria
+                            {{-- Controle das abas de categoria --}}
+                            <a class="{{ $categoria->id === $categoriaAtivaId ? 'active' : '' }}"
                                id="categoria-{{ $categoria->id }}-tab"
                                data-toggle="tab"
                                href="#categoria-{{ $categoria->id }}"
@@ -91,21 +96,22 @@
         <div class="tab-content" id="myTabContent">
 
             @foreach ($categorias as $categoria)
-                <div class="tab-pane fade {{ $categoria->id === $categoriaAtivaId ? 'show active' : '' }}" # funcionamento das abas
+                {{-- Funcionamento das abas --}}
+                <div class="tab-pane fade {{ $categoria->id === $categoriaAtivaId ? 'show active' : '' }}"
                      id="categoria-{{ $categoria->id }}"
                      role="tabpanel"
                      aria-labelledby="categoria-{{ $categoria->id }}-tab">
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="mb-0">{{ $categoria->nome }}</h5>
-                        <div class="d-flex" style="gap: 8px;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mt-4 mb-4" style="gap: 12px;">
+                        <h5 class="mb-0"></h5>
+                        <div class="d-flex" style="gap: 10px;">
                             <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-sm btn-outline-secondary">
                                 Editar categoria
                             </a>
 
-             
+                            {{-- Só deixa excluir se a categoria não tiver nenhuma receita --}}
                             @if (!$categoria->receitas()->exists())
-                                <form action="{{ route('categorias.destroy', $categoria->id) }}" method="GET"   # Só deixa excluir se a categoria não tiver nenhuma receita 
+                                <form action="{{ route('categorias.destroy', $categoria->id) }}" method="GET"
                                       onsubmit="return confirm('Tem certeza que deseja excluir a categoria \'{{ $categoria->nome }}\'?');">
                                     <button type="submit" class="btn btn-sm text-white" style="background: #dc3545;">
                                         Excluir
@@ -117,25 +123,29 @@
 
                     <div class="row">
                         @forelse ($receitas->where('categoria_id', $categoria->id) as $receita)
-                            <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="col-lg-4 col-md-6 mb-5">
                                 <div class="card shadow-sm h-100" style="border-radius: 15px;">
 
-                                   @if ($receita->imagem)  <!-- para exibir a imagem da receita, se houver -->
-                                     <img src="{{ $receita->imagem }}" class="card-img-top"
-                                        style="height: 180px; width: 100%; object-fit: contain; background-color: #f8f9fa; border-radius: 15px 15px 0 0;"
-                                          alt="{{ $receita->titulo }}">
+                                    {{-- Exibe a imagem da receita, se houver --}}
+                                    @if ($receita->imagem)
+                                        <img src="{{ $receita->imagem }}" class="card-img-top"
+                                             style="height: 180px; width: 100%; object-fit: contain; background-color: #f8f9fa; border-radius: 15px 15px 0 0;"
+                                             alt="{{ $receita->titulo }}">
                                     @endif
 
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $receita->titulo }}</h5>
                                     </div>
+
                                     <div class="card-footer d-flex justify-content-between bg-white border-0 pb-3">
                                         <a href="{{ route('receitas.view', $receita->id) }}" class="btn btn-sm btn-outline-secondary">
                                             Ver / Editar
                                         </a>
+
+                                        {{-- Confirmação antes de excluir a receita --}}
                                         <form action="{{ route('receitas.destroy', $receita->id) }}" method="GET"
-                                              onsubmit="return confirm('Tem certeza que deseja excluir esta receita?');"> <!-- mensagem de confirmação antes de excluir a receita -->
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button> <!-- botao de excluir receita -->
+                                              onsubmit="return confirm('Tem certeza que deseja excluir esta receita?');">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
                                         </form>
                                     </div>
                                 </div>

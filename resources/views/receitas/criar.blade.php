@@ -61,12 +61,12 @@
 
                     <div class="mb-3">
                         <label class="form-label">Ingredientes</label>
-                        <textarea name="ingredientes" class="form-control" rows="3" placeholder="Digite os ingredientes"></textarea>
+                        <textarea name="ingredientes" class="form-control" rows="3" placeholder="Ex: 2 xícaras de açúcar, 100g de manteiga,..."></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Modo de Preparo</label>
-                        <textarea name="modo_preparo" class="form-control" rows="4" placeholder="Descreva o preparo"></textarea>
+                        <textarea name="modo_preparo" class="form-control" rows="4" placeholder="Ex: Bata os ingredientes, leve ao forno,..."></textarea>
                     </div>
 
                   <div class="mb-5">

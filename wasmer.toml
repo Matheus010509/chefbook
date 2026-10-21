@@ -1,6 +1,6 @@
 [package]
 name = "matheus010509/chefbook"
-version = "0.1.3"
+version = "0.1.4"
 description = "ChefBook"
 private = true
 

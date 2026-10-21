@@ -7330,6 +7330,11 @@ h6 {
     margin-top: 15px;
   }
 }
+@media (max-width: 767px) {
+    .food_menu_nav a img {
+        display: none !important;
+    }
+}
 
 /* line 189, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_footer.scss */
 .footer-area .copyright_social_icon a {
@@ -7337,4 +7342,14 @@ h6 {
   color: #969697;
 }
 
+.banner_part::before,
+.banner_part::after,
+.exclusive_item_part::before,
+.exclusive_item_part::after,
+.about_part::before,
+.about_part::after,
+.blog_item_section::before,
+.blog_item_section::after {
+    display: none !important;
+}
 /*# sourceMappingURL=style.css.map */
