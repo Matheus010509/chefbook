@@ -10,7 +10,7 @@
                     <div class="banner_text_iner">
                         <h5>Seu livro de receitas</h5>
                         <h1>ChefBook</h1>
-                        <p>Seja bem vindo(a) ao seu restaurente virtual, aqui você pode organizar e centralizar suas receitas em um só lugar!</p>
+                        <p>Seja bem vindo(a) ao seu restaurante virtual, aqui você pode organizar e centralizar suas receitas em um só lugar!</p>
                         <div class="banner_btn">
                             <div class="banner_btn_iner">
                            <a href="/minhas-receitas" class="meu-botao-receitas">

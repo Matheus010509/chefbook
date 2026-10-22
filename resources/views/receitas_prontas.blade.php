@@ -92,10 +92,10 @@
                                     <h4>Modo de preparo</h4>
                                     <p>
                                         Em uma tigela, misture manteiga, açúcar e açúcar mascavo até formar um creme.
-                                        Adicione o ovo e a baunilha e misture bem.
-                                        Acrescente farinha, fermento e sal e misture até formar uma massa.
-                                        Coloque as gotas de chocolate e misture.
-                                        Faça bolinhas de massa e coloque em uma forma com papel manteiga.
+                                        Adicione o ovo, a baunilha e misture bem.
+                                        Acrescente farinha, fermento, sal e misture até formar uma massa.
+                                        Coloque as gotas de chocolate, misture.
+                                        Faça bolinhas de massa depois coloque em uma forma com papel manteiga.
                                         Achate levemente as bolinhas.
                                         Leve ao forno 180 °C por 12–15 minutos.
                                     </p>
