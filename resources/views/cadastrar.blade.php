@@ -2,7 +2,10 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>ChefBook - Cadastro</title>
+<title>ChefBook - Seu Livro de Receitas Online</title>
+<meta name="description" content="Organize e guarde suas receitas no ChefBook, seu livro de receitas digital. Crie sua conta e comece agora.">
+
+    
 <link rel="icon" href="{{ asset('img/favicon.png') }}">
 <link rel="stylesheet" href="{{ asset('css/cadastro.css') }}">
 
