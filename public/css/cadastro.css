@@ -181,4 +181,15 @@ input:focus {
   .btn {
     padding: 14px;
   }
+
+}
+  
+input.input-error {
+    border-color: red;
+}
+
+.field-error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
 }

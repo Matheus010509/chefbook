@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-         <title>ChefBook - Seu Livro de Receitas Online</title>
+         <title>ChefBook</title>
     
     @include('layout/scripts_css')
 </head>
