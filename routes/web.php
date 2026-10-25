@@ -23,9 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
     Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Rotas de receitas
-    Route::get('/minhas-receitas', [MinhasReceitasController::class, 'minhasReceitas']);
-    Route::get('/receitas-prontas', [ReceitasProntasController::class, 'receitasProntas']);
+    //Rotas de receitas;
+    Route::get('/minhas-receitas', [MinhasReceitasController::class, 'minhasReceitas'])->name('minhas-receitas');
+    Route::get('/receitas-prontas', [ReceitasProntasController::class, 'receitasProntas'])->name('receitas-prontas');
 
     //CRUD DE RECEITAS
     Route::get('/receitas',              [MinhasReceitasController::class, 'index'])->name('receitas.index');
@@ -37,7 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/receitas/search',       [MinhasReceitasController::class, 'search'])->name('receitas.search');
 
     //CRUD DE CATEGORIAS
-    Route::get('/categorias',              [CategoriaController::class, 'index'])->name('categorias.index');
     Route::get('/categorias/create',       [CategoriaController::class, 'create'])->name('categorias.create');
     Route::post('/categorias',             [CategoriaController::class, 'store'])->name('categorias.store');
     Route::get('/categorias/{id}/edit',    [CategoriaController::class, 'edit'])->name('categorias.edit');

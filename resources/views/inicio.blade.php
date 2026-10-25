@@ -13,7 +13,7 @@
                         <p>Seja bem vindo(a) ao seu restaurante virtual, aqui você pode organizar e centralizar suas receitas em um só lugar!</p>
                         <div class="banner_btn">
                             <div class="banner_btn_iner">
-                           <a href="/minhas-receitas" class="meu-botao-receitas">
+                           <a href="{{ route('minhas-receitas') }}" class="meu-botao-receitas">
     Minhas receitas
    <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
 </a>
@@ -82,8 +82,8 @@
                         <img src="{{ asset('img/blog/blog_1.png') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="receitas-prontas">Panquecas americanas</a></h3>
-                        <a href="receitas-prontas" class="btn_3">
+                        <h3><a href="{{ route('receitas-prontas') }}">Panquecas americanas</a></h3>
+                        <a href="{{ route('receitas-prontas') }}" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>
@@ -98,8 +98,8 @@
                         <img src="{{ asset('img/cookie.jpg') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="receitas-prontas">Cookies</a></h3>
-                        <a href="receitas-prontas" class="btn_3">
+                        <h3><a href="{{ route('receitas-prontas') }}">Cookies</a></h3>
+                        <a href="{{ route('receitas-prontas') }}" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>
@@ -114,8 +114,8 @@
                         <img src="{{ asset('img/pave.webp') }}" alt="">
                     </div>
                     <div class="single_blog_text">
-                        <h3><a href="receitas-prontas">Pavê de maracujá</a></h3>
-                        <a href="receitas-prontas" class="btn_3">
+                        <h3><a href="{{ route('receitas-prontas') }}">Pavê de maracujá</a></h3>
+                        <a href="{{ route('receitas-prontas') }}" class="btn_3">
                             Leia mais 
                             <img src="{{ asset('img/icon/left_1.svg') }}" alt="">
                         </a>

@@ -85,7 +85,7 @@
                                role="tab"
                                aria-controls="categoria-{{ $categoria->id }}"
                                aria-selected="{{ $categoria->id === $categoriaAtivaId ? 'true' : 'false' }}">
-                                {{ $categoria->nome }} <img src="img/icon/play.svg" alt="play">
+                                {{ $categoria->nome }} <img src="{{ asset('img/icon/play.svg') }}" alt="play">
                             </a>
                         @endforeach
                     </div>

@@ -29,6 +29,11 @@ class Receita extends Model
 
         return $this->imagem;   //  URL completa do Cloudinary
     }
+
+    public function scopeDoUsuario($query, $userId) //Criei um scope para nn repetir o where('users_id') em todo lugar. Só acrescente o método
+    {
+    return $query->where('users_id', $userId);
+}
     
 
     public function categoria() //relacao

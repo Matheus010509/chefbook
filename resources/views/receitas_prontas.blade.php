@@ -26,13 +26,10 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/blog_1.png" alt="">
-
-                                </a>
+                                <img class="card-img rounded-0" src="{{ asset('img/blog/blog_1.png') }}" alt="Panquecas Americanas">
                             </div>
 
                             <div class="blog_details">
-
                                 <div class="about_text">
 
                                     <h2>Panquecas Americanas</h2>
@@ -55,24 +52,19 @@
                                         Aqueça uma frigideira em fogo médio e unte levemente com manteiga ou óleo.
                                         Coloque uma pequena concha da massa na frigideira.
                                         Quando aparecerem bolhinhas na superfície, vire a panqueca.
-                                        Deixe dourar do outro lado e retire
+                                        Deixe dourar do outro lado e retire.
                                     </p>
 
                                 </div>
-                            </div>
                             </div>
                         </article>
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/cookie.jpg" alt="">
-                                <a href="#" class="blog_item_date">
-
-                                </a>
+                                <img class="card-img rounded-0" src="{{ asset('img/cookie.jpg') }}" alt="Cookies de Chocolate">
                             </div>
 
                             <div class="blog_details">
-
                                 <div class="about_text">
 
                                     <h2>Cookies de Chocolate</h2>
@@ -106,17 +98,13 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pave.webp" alt="">
-                                <a href="#" class="blog_item_date">
-
-                                </a>
+                                <img class="card-img rounded-0" src="{{ asset('img/pave.webp') }}" alt="Pavê de Maracujá">
                             </div>
 
                             <div class="blog_details">
-
                                 <div class="about_text">
 
-                                    <h2>Pave de Maracuja</h2>
+                                    <h2>Pavê de Maracujá</h2>
                                     <h4>Ingredientes</h4>
                                     <p>
                                         1 lata ou caixa de leite condensado <br>
@@ -136,9 +124,9 @@
                                         Coloque uma camada do creme de maracujá.
                                         Repita as camadas até acabar os ingredientes.
                                         Leve à geladeira por cerca de 3 horas.
-
-                                        Cobertura
-
+                                    </p>
+                                    <p>
+                                        <strong>Cobertura:</strong>
                                         Misture a polpa do maracujá com o açúcar.
                                         Coloque por cima do pavê antes de servir.
                                     </p>
@@ -149,14 +137,10 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/bolodechocolate.webp" alt="">
-                                <a href="#" class="blog_item_date">
-
-                                </a>
+                                <img class="card-img rounded-0" src="{{ asset('img/bolodechocolate.webp') }}" alt="Bolo de chocolate">
                             </div>
 
                             <div class="blog_details">
-
                                 <div class="about_text">
 
                                     <h2>Bolo de chocolate</h2>
@@ -174,20 +158,20 @@
                                         1 caixa de creme de leite <br>
                                         3 colheres de chocolate em pó <br>
                                         3 colheres de açúcar <br>
-                                        1 colher de manteiga <br>
+                                        1 colher de manteiga
+                                    </p> <br>
 
                                     <h4>Modo de preparo</h4>
                                     <p>
-                                        Massa:
-
+                                        <strong>Massa:</strong>
                                         Em uma tigela, misture ovos, açúcar e óleo.
                                         Adicione leite, farinha e chocolate em pó e misture bem.
                                         Acrescente o fermento e mexa levemente.
                                         Coloque a massa em uma forma untada.
                                         Asse em forno a 180 °C por cerca de 35–40 minutos.
-
-                                        Cobertura:
-
+                                    </p>
+                                    <p>
+                                        <strong>Cobertura:</strong>
                                         Em uma panela, misture creme de leite, chocolate, açúcar e manteiga.
                                         Leve ao fogo baixo mexendo até engrossar.
                                         Despeje sobre o bolo ainda morno.
@@ -199,20 +183,16 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/bolodelimao.webp" alt="">
-                                <a href="#" class="blog_item_date">
-
-                                </a>
+                                <img class="card-img rounded-0" src="{{ asset('img/bolodelimao.webp') }}" alt="Bolo de Limão">
                             </div>
 
                             <div class="blog_details">
-
                                 <div class="about_text">
 
                                     <h2>Bolo de Limão</h2>
                                     <h4>Ingredientes</h4>
                                     <p>
-                                        Massa: <br>
+                                        <strong>Massa:</strong> <br>
                                         2 xícaras de farinha de trigo <br>
                                         1 xícara de açúcar <br>
                                         3 ovos <br>
@@ -221,23 +201,22 @@
                                         1/2 xícara de leite <br>
                                         1 colher de sopa de fermento químico <br>
                                         Raspas de limão (opcional, para dar mais sabor) <br>
-                                        Cobertura: <br>
+                                        <strong>Cobertura:</strong> <br>
                                         1 lata ou caixa de leite condensado <br>
                                         Suco de 1 ou 2 limões
-                                    <br>
+                                    </p> <br>
 
                                     <h4>Modo de preparo</h4>
                                     <p>
-                                        Massa:
-
+                                        <strong>Massa:</strong>
                                         Em uma tigela, misture ovos, açúcar e óleo.
                                         Adicione leite, suco de limão e farinha de trigo e misture bem.
                                         Acrescente o fermento e mexa levemente.
                                         Coloque em uma forma untada.
                                         Leve ao forno a 180 °C por cerca de 35–40 minutos.
-
-                                        Cobertura:
-
+                                    </p>
+                                    <p>
+                                        <strong>Cobertura:</strong>
                                         Misture leite condensado com suco de limão até engrossar.
                                         Despeje sobre o bolo já frio.
                                         Se quiser, coloque raspas de limão por cima.
@@ -249,5 +228,7 @@
 
                     </div>
                 </div>
-
+            </div>
+        </div>
+    </section>
 @endsection

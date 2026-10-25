@@ -39,24 +39,36 @@
                     <div class="alert alert-danger">{{ session('erro') }}</div>
                 @endif
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        Corrija os campos destacados abaixo e tente novamente.
+                    </div>
+                @endif
+
                 <form action="{{ route('categorias.update', $categoria->id) }}" method="POST" class="receita_form">
-    @csrf
+                    @csrf
 
-    <div class="mb-4">
-        <label class="form-label">Nome da Categoria</label>
-        <input type="text" name="nome" class="form-control" value="{{ $categoria->nome }}">
-    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Nome da Categoria</label>
+                        <input type="text" name="nome"
+                               class="form-control @error('nome') is-invalid @enderror"
+                               value="{{ old('nome', $categoria->nome) }}"
+                               maxlength="255">
+                        @error('nome')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-   <div class="text-center">
-        <button type="submit" class="btn_1">
-            Salvar Alterações
-        </button>
-        <a href="{{ route('receitas.index') }}" class="btn_2">
-            Voltar
-        </a>
-    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn_1">
+                            Salvar Alterações
+                        </button>
+                        <a href="{{ route('receitas.index') }}" class="btn_2">
+                            Voltar
+                        </a>
+                    </div>
 
-</form>
+                </form>
 
             </div>
         </div>

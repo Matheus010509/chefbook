@@ -20,10 +20,6 @@
 
 @section('conteudo')
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/receitas.css') }}">
-@endpush
-
 <section class="food_menu gray_bg">
     <div class="container">
 
@@ -46,19 +42,39 @@
                 <form action="{{ route('admin.update', $usuario->id) }}" method="POST" class="receita_form">
                     @csrf
 
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label class="form-label">Nome</label>
-                        <input type="text" name="name" class="form-control" value="{{ $usuario->name }}">
+                        <input type="text" name="name"
+                               class="form-control {{ $errors->has('name') ? 'input-error' : '' }}"
+                               value="{{ old('name', $usuario->name) }}"
+                               autocomplete="name"
+                               required>
+                        @error('name')
+                            <div class="field-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" value="{{ $usuario->email }}">
+                        <input type="email" name="email"
+                               class="form-control {{ $errors->has('email') ? 'input-error' : '' }}"
+                               value="{{ old('email', $usuario->email) }}"
+                               autocomplete="username"
+                               required>
+                        @error('email')
+                            <div class="field-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-4 form-group">
                         <label class="form-label">Nova Senha</label>
-                        <input type="password" name="password" class="form-control" placeholder="Deixe em branco para manter a atual">
+                        <input type="password" name="password"
+                               class="form-control {{ $errors->has('password') ? 'input-error' : '' }}"
+                               placeholder="Deixe em branco para manter a atual"
+                               autocomplete="new-password">
+                        @error('password')
+                            <div class="field-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="d-flex gap-2 justify-content-center">

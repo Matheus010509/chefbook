@@ -25,67 +25,50 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
 
+                <div class="section_tittle text-center mb-4">
+                    <p>Nova</p>
+                    <h2>Categoria</h2>
+                </div>
 
-            <div class="section_tittle text-center mb-4">
-                <p>Nova</p>
-                <h2>Categoria</h2>
+                @if (session('erro'))
+                    <div class="alert alert-danger">{{ session('erro') }}</div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        Corrija os campos destacados abaixo e tente novamente.
+                    </div>
+                @endif
+
+                <form action="{{ route('categorias.store') }}" method="POST" class="receita_form">
+                    @csrf
+
+                    <div class="mb-5">
+                        <label class="form-label">Nome da Categoria</label>
+                        <input type="text" name="nome"
+                               class="form-control @error('nome') is-invalid @enderror"
+                               placeholder="Ex: Massas"
+                               value="{{ old('nome') }}"
+                               maxlength="255">
+                        @error('nome')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn_1">
+                            Salvar Categoria
+                        </button>
+                        <a href="{{ route('receitas.index') }}" class="btn_2">
+                            Voltar
+                        </a>
+                    </div>
+
+                </form>
+
             </div>
-
-            {{-- Mensagem de erro --}}
-            @if (session('erro'))
-                <div class="alert alert-danger">
-                    {{ session('erro') }}
-                </div>
-            @endif
-
-            {{-- Erros de validação --}}
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $erro)
-                            <li>{{ $erro }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form action="{{ route('categorias.store') }}"
-                  method="POST"
-                  class="receita_form">
-
-                @csrf
-
-                <div class="mb-5">
-                    <label class="form-label">
-                        Nome da Categoria
-                    </label>
-
-                    <input
-                        type="text"
-                        name="nome"
-                        class="form-control"
-                        placeholder="Ex: Massas"
-                        value="{{ old('nome') }}"
-                    >
-                </div>
-
-                <div class="text-center">
-
-                    <button type="submit" class="btn_1">
-                        Salvar Categoria
-                    </button>
- <a href="{{ route('receitas.index') }}" class="btn_2">
-            Voltar
-        </a>
-                </div>
-
-            </form>
-
         </div>
     </div>
-</div>
-
-
 </section>
 
 @endsection

@@ -20,10 +20,6 @@
 
 @section('conteudo')
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/receitas.css') }}">
-@endpush
-
 <section class="food_menu gray_bg">
     <div class="container">
 

@@ -4,12 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\Receita;
 use App\Models\Categoria;
 use App\Services\ImageService;
 
 class MinhasReceitasController extends Controller
 {
+    // Regras de validação compartilhadas entre store e update (espelham a migration de receitas)
+    private function regras(): array
+    {
+        return [
+            'titulo'       => 'required|string|max:255',
+            'ingredientes' => 'required|string',
+            'modo_preparo' => 'required|string',
+            // categoria_id é nullable no banco, mas se vier precisa ser uma categoria DO USUÁRIO logado
+                'categoria_id' => [
+                'required',
+                'integer',
+                Rule::exists('categorias', 'id')->where(
+                    fn ($query) => $query->where('user_id', Auth::id())
+                ),
+],
+            'favorito'     => 'nullable|boolean',
+            'imagem'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ];
+    }
+
     public function minhasReceitas()
     {
         return $this->index();
@@ -18,13 +39,10 @@ class MinhasReceitasController extends Controller
     // Exibe a lista de receitas do usuário logado, organizadas por categoria
     public function index()
     {
-        // Busca apenas as receitas do usuário autenticado, já trazendo a categoria junto
         $receitas = Receita::with('categoria')->where('users_id', Auth::id())->get();
 
-        // Busca apenas as categorias do usuário autenticado, usadas para montar as abas na view
         $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
-        // Retorna a view de listagem, com filtro vazio
         return view('receitas.lista', [
             'receitas' => $receitas,
             'categorias' => $categorias,
@@ -35,7 +53,6 @@ class MinhasReceitasController extends Controller
     // Exibe o formulario de cadastro de uma nova receita
     public function create()
     {
-        // Categorias disponiveis para o select do formulario (só as do usuário logado)
         $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
         return view('receitas.criar', ['categorias' => $categorias]);
     }
@@ -43,20 +60,22 @@ class MinhasReceitasController extends Controller
     // Recebe os dados do formulario e salva no banco
     public function store(Request $request, ImageService $images)
     {
+        // Fora do try: se falhar, o Laravel volta ao form com $errors e old()
+        $dados = $request->validate($this->regras());
+
         try {
             $receita = new Receita();
 
-            // Preenche os dados a partir do que foi enviado pelo formulário
-            $receita->titulo = $request->input('titulo');
-            $receita->categoria_id = $request->input('categoria_id');
-            $receita->ingredientes = $request->input('ingredientes');
-            $receita->modo_preparo = $request->input('modo_preparo');
-            $receita->favorito = $request->input('favorito', false);
+            $receita->titulo = $dados['titulo'];
+            $receita->categoria_id = $dados['categoria_id'];
+            $receita->ingredientes = $dados['ingredientes'];
+            $receita->modo_preparo = $dados['modo_preparo'];
+            $receita->favorito = $request->boolean('favorito');
 
             // Vincula a receita ao user logado
             $receita->users_id = Auth::id();
 
-            // Se veio uma imagem, envia para o Cloudinary e guarda a URL e o public_id no banco
+            // Se veio uma imagem, envia para o Cloudinary e guarda a URL e o public_id
             if ($request->hasFile('imagem')) {
                 $img = $images->upload($request->file('imagem'));
                 $receita->imagem = $img['url'];
@@ -68,9 +87,8 @@ class MinhasReceitasController extends Controller
             session()->flash('msg', 'Receita cadastrada com sucesso!');
             return redirect()->route('receitas.index');
         } catch (\Exception $e) {
-            // Em caso de erro, guarda a mensagem na session e devolve para o form
             session()->flash('erro', 'Erro ao cadastrar: ' . $e->getMessage());
-            return redirect()->route('receitas.create');
+            return redirect()->route('receitas.create')->withInput();
         }
     }
 
@@ -78,13 +96,11 @@ class MinhasReceitasController extends Controller
     public function view($id)
     {
         try {
-            // Busca a receita pelo id, garantindo que pertence ao usuário logado
             $receita = Receita::with('categoria')
                 ->where('id', $id)
                 ->where('users_id', Auth::id())
                 ->firstOrFail();
 
-            // Categorias disponiveis para o select do formulario de edição (só as do usuário)
             $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
             return view('receitas.visualizar', [
@@ -100,39 +116,46 @@ class MinhasReceitasController extends Controller
     // Atualiza os dados de uma receita existente
     public function update(Request $request, $id, ImageService $images)
     {
+        // Fora do try, pelo mesmo motivo do store
+        $dados = $request->validate($this->regras());
+
         try {
-            // acha a receita que sera atualizada, garantindo que é do usuário logado
+            // garante que a receita é do usuário logado
             $receita = Receita::where('id', $id)
                 ->where('users_id', Auth::id())
                 ->firstOrFail();
 
-            // atualiza os campos com os dados do form
-            $receita->titulo = $request->input('titulo');
-            $receita->categoria_id = $request->input('categoria_id');
-            $receita->ingredientes = $request->input('ingredientes');
-            $receita->modo_preparo = $request->input('modo_preparo');
+            $receita->titulo = $dados['titulo'];
+            $receita->categoria_id = $dados['categoria_id'];
+            $receita->ingredientes = $dados['ingredientes'];
+            $receita->modo_preparo = $dados['modo_preparo'];
 
-            // mantem o valor atual de favorito (false). Deixei apenas no movel para favoritar
-            $receita->favorito = $request->input('favorito', $receita->favorito);
+            // favorito é controlado pelo móvel: só altera se o form enviar o campo
+            if ($request->has('favorito')) {
+                $receita->favorito = $request->boolean('favorito');
+            }
 
-            // se veio uma nova imagem, apaga a antiga do Cloudinary e envia a nova
+            // nova imagem: sobe a nova primeiro, e só apaga a antiga depois de salvar
+            $publicIdAntigo = null;
             if ($request->hasFile('imagem')) {
-                $images->delete($receita->imagem_public_id);
+                $publicIdAntigo = $receita->imagem_public_id;
 
                 $img = $images->upload($request->file('imagem'));
                 $receita->imagem = $img['url'];
                 $receita->imagem_public_id = $img['public_id'];
             }
 
-            // salva as mudanças no banco
             $receita->save();
+
+            if ($publicIdAntigo) {
+                $images->delete($publicIdAntigo);
+            }
 
             session()->flash('msg', 'Receita atualizada com sucesso!');
             return redirect()->route('receitas.index');
         } catch (\Exception $e) {
             session()->flash('erro', 'Erro ao atualizar: ' . $e->getMessage());
-            // em caso de erro, volta para a tela de edição da mesma receita
-            return redirect()->route('receitas.view', ['id' => $id]);
+            return redirect()->route('receitas.view', ['id' => $id])->withInput();
         }
     }
 
@@ -140,13 +163,14 @@ class MinhasReceitasController extends Controller
     public function destroy($id, ImageService $images)
     {
         try {
-            // Busca e exclui a receita, garantindo que pertence ao usuário logado
             $receita = Receita::where('id', $id)
                 ->where('users_id', Auth::id())
                 ->firstOrFail();
 
             // apaga a imagem do Cloudinary (se existir) antes de remover a receita
-            $images->delete($receita->imagem_public_id);
+            if ($receita->imagem_public_id) {
+                $images->delete($receita->imagem_public_id);
+            }
 
             $receita->delete();
 
@@ -161,8 +185,10 @@ class MinhasReceitasController extends Controller
     // Busca as receitas do user logado pelo título
     public function search(Request $request)
     {
-        // remove espaços em branco na busca
-        // Se não vier nenhum filtro assume string vazia
+        $request->validate([
+            'filtro' => 'nullable|string|max:255',
+        ]);
+
         $filtro = trim((string) $request->input('filtro', ''));
 
         $receitas = Receita::with('categoria')
@@ -173,12 +199,10 @@ class MinhasReceitasController extends Controller
 
         $categorias = Categoria::where('user_id', Auth::id())->orderBy('nome')->get();
 
-        // Retorna a mesma view de listagem, agora com os resultados filtrados
         return view('receitas.lista', [
             'receitas' => $receitas,
             'categorias' => $categorias,
             'filtro' => $filtro,
         ]);
     }
-  
 }
