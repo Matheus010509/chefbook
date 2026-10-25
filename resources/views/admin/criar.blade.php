@@ -48,7 +48,7 @@
         type="text"
         name="name"
         class="form-control {{ $errors->has('name') ? 'input-error' : '' }}"
-        placeholder="Nome completo"
+        placeholder="Nome de usuário"
         value="{{ old('name') }}"
         autocomplete="name"
         autofocus
@@ -109,6 +109,8 @@
     <button type="submit" class="btn_1">
         Salvar Usuário
     </button>
+    
+      <a href="{{ route('admin.index') }}" class="btn_2"> Voltar </a>
 </div>
 
                 </form>
