@@ -30,18 +30,18 @@ class Receita extends Model
         return $this->imagem;   //  URL completa do Cloudinary
     }
 
-    public function scopeDoUsuario($query, $userId) //Criei um scope para nn repetir o where('users_id') em todo lugar. Só acrescente o método
+    public function scopeDoUsuario($query, $userId) //Criei um scope para nn repetir o where('users_id') em todo lugar
     {
     return $query->where('users_id', $userId);
 }
     
 
-    public function categoria() //relacao
+    public function categoria() //relacão de receita com categoria, uma receita pertence a uma categoria
     {
         return $this->belongsTo(Categoria::class);
     }
 
-    public function user() //
+    public function user() //relacão de receita com usuario, uma receita pertence a um usuario
     {
         return $this->belongsTo(User::class, 'users_id');
     }

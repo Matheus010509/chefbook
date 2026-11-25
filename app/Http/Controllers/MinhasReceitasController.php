@@ -18,6 +18,7 @@ class MinhasReceitasController extends Controller
             'titulo'       => 'required|string|max:255',
             'ingredientes' => 'required|string',
             'modo_preparo' => 'required|string',
+
             // categoria_id é nullable no banco, mas se vier precisa ser uma categoria DO USUÁRIO logado
                 'categoria_id' => [
                 'required',
@@ -79,7 +80,7 @@ class MinhasReceitasController extends Controller
             if ($request->hasFile('imagem')) {
                 $img = $images->upload($request->file('imagem'));
                 $receita->imagem = $img['url'];
-                $receita->imagem_public_id = $img['public_id'];
+                $receita->imagem_public_id = $img['public_id']; //como se fosse umn id para as imagens, para nn ficar usando a url 
             }
 
             $receita->save();

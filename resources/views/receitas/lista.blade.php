@@ -71,14 +71,15 @@
                     @endif
                 </form>
 
-                {{-- Abas de categoria --}}
+                {{-- Abas de categoria: ficam na coluna da direita, sempre em uma linha (rolagem lateral se passar do espaço) --}}
                 @if ($categorias->isEmpty())
                     <p class="text-muted">Você ainda não criou nenhuma categoria.</p>
                 @else
-                    <div class="nav nav-tabs food_menu_nav mt-3 mb-4" id="myTab" role="tablist" style="gap: 10px 20px;">
+                    <div class="nav nav-tabs food_menu_nav flex-nowrap mt-3 mb-4" id="myTab" role="tablist"
+                         style="gap: 10px 16px; overflow-x: auto; overflow-y: hidden; padding-bottom: 25px; justify-content: flex-start;">
                         @foreach ($categorias as $categoria)
-                            {{-- Controle das abas de categoria --}}
-                            <a class="{{ $categoria->id === $categoriaAtivaId ? 'active' : '' }}"
+                            <a class="flex-shrink-0 {{ $categoria->id === $categoriaAtivaId ? 'active' : '' }}"
+                               style="white-space: nowrap;"
                                id="categoria-{{ $categoria->id }}-tab"
                                data-toggle="tab"
                                href="#categoria-{{ $categoria->id }}"
@@ -90,6 +91,7 @@
                         @endforeach
                     </div>
                 @endif
+
             </div>
         </div>
 
@@ -126,7 +128,7 @@
                             <div class="col-lg-4 col-md-6 mb-5">
                                 <div class="card shadow-sm h-100" style="border-radius: 15px;">
 
-                                    {{-- Exibe a imagem da receita, se houver --}}
+                                    {{-- Exibe a imagem da receita, se houver (URL completa do Cloudinary, sem asset()) --}}
                                     @if ($receita->imagem)
                                         <img src="{{ $receita->imagem }}" class="card-img-top"
                                              style="height: 180px; width: 100%; object-fit: contain; background-color: #f8f9fa; border-radius: 15px 15px 0 0;"

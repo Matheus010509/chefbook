@@ -28,7 +28,6 @@ class ReceitaController extends Controller
 
     // GET /api/receitas/{receita} - detalhe de uma receita do usuário autenticado
     // Se a receita não existir OU for de outro usuário, retorna 404
-    // (não revela que o id existe para quem não é o dono).
     public function show(Request $request, $receita)
     {
         $receita = Receita::doUsuario($request->user()->id)

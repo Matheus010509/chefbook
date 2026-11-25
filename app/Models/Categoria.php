@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Categoria extends Model
 {
-    protected $fillable = ['nome', 'user_id'];
+    protected $fillable = [
+        'nome', 
+        'user_id'
+        ];
 
     public function receitas()
     {
